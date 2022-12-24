@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66906B5B2957408C00F2E6AE /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66906B5A2957408C00F2E6AE /* TweetTableViewCell.swift */; };
 		66AED8722955F4A60071BEB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AED8712955F4A60071BEB4 /* AppDelegate.swift */; };
 		66AED8742955F4A60071BEB4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AED8732955F4A60071BEB4 /* SceneDelegate.swift */; };
 		66AED8762955F4A60071BEB4 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AED8752955F4A60071BEB4 /* MainTabBarViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		66906B5A2957408C00F2E6AE /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		66AED86E2955F4A60071BEB4 /* TwitterAndFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterAndFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66AED8712955F4A60071BEB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66AED8732955F4A60071BEB4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		66906B592957406C00F2E6AE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66906B5A2957408C00F2E6AE /* TweetTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		66AED8652955F4A60071BEB4 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +72,7 @@
 		66AED8702955F4A60071BEB4 /* TwitterAndFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				66906B592957406C00F2E6AE /* Views */,
 				66AED8852955F62F0071BEB4 /* Controllers */,
 				66AED8712955F4A60071BEB4 /* AppDelegate.swift */,
 				66AED8732955F4A60071BEB4 /* SceneDelegate.swift */,
@@ -169,6 +180,7 @@
 				66AED8742955F4A60071BEB4 /* SceneDelegate.swift in Sources */,
 				66AED8882955F6790071BEB4 /* HomeViewController.swift in Sources */,
 				66AED88E2955F6AA0071BEB4 /* DirectMessagesViewController.swift in Sources */,
+				66906B5B2957408C00F2E6AE /* TweetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
