@@ -7,13 +7,29 @@
 
 import UIKit
 
+//MARK: Action protocol from TweetTableViewCell buttons
+protocol TweetTableViewCellDelegate: AnyObject {
+    func tweetTableViewCellDidTapReply()
+    func tweetTableViewCellDidTapRetweet()
+    func tweetTableViewCellDidTapLike()
+    func tweetTableViewCellDidTapShare()
+}
+
 class TweetTableViewCell: UITableViewCell {
 
     static let identifier = "tweetTableViewCell"
     
+    /*
+     when delegate equals to nil, it will be deallocated from memory because it's not in the ARC count (Automatic Reference Counting)
+     ARC is a memory management tool that counts the number of references that an object has and if there is no strong reference
+     it will deallocate from memory
+     https://medium.com/@deciomontanhani/gerenciamento-de-memória-no-ios-weak-strong-e-unowned-5324a7ed3fc4
+    */
+    weak var delegate: TweetTableViewCellDelegate?
+    
     private let actionSpacing: CGFloat = 50
+    
     private let avatarImageView: UIImageView = {
-        
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
@@ -26,7 +42,6 @@ class TweetTableViewCell: UITableViewCell {
     }()
     
     private let displayNameLabel: UILabel = {
-        
        let label = UILabel()
         label.text = "Gustavo"
         label.font = .systemFont(ofSize: 18, weight: .bold)
@@ -35,7 +50,6 @@ class TweetTableViewCell: UITableViewCell {
     }()
     
     private let usernameLabel: UILabel = {
-        
        let label = UILabel()
         label.text = "@gbraghin"
         label.textColor = .secondaryLabel
@@ -45,17 +59,15 @@ class TweetTableViewCell: UITableViewCell {
     }()
     
     private let tweetTextContentLabel: UILabel = {
-       
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Tweet maior para testar se o tamanho vai ficar bom e se as pessoas podem escrever o que quiserem"
-        //number of lines = 0 to let it be adaptative
+        label.text = "Tweet with long text to test if its size is going to be adptative or not ...!!!... nice try"
+        //Number of lines = 0 to let it be adaptative
         label.numberOfLines = 0
         return label
     }()
     
     private let replyButton: UIButton = {
-       
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "bubble.left"), for: .normal)
@@ -64,7 +76,6 @@ class TweetTableViewCell: UITableViewCell {
     }()
     
     private let retweetButton: UIButton = {
-       
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "arrow.2.squarepath"), for: .normal)
@@ -73,7 +84,6 @@ class TweetTableViewCell: UITableViewCell {
     }()
     
     private let likeButton: UIButton = {
-       
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -82,7 +92,6 @@ class TweetTableViewCell: UITableViewCell {
     }()
     
     private let shareButton: UIButton = {
-       
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
@@ -101,6 +110,31 @@ class TweetTableViewCell: UITableViewCell {
         contentView.addSubview(likeButton)
         contentView.addSubview(shareButton)
         configureConstraints()
+        configureButtons()
+    }
+    
+    // @objc is to make the method visible to Objective C
+    @objc private func didTapReply() {
+        delegate?.tweetTableViewCellDidTapReply()
+    }
+    
+    @objc private func didTapRetweet() {
+        delegate?.tweetTableViewCellDidTapRetweet()
+    }
+    
+    @objc private func didTapLike() {
+        delegate?.tweetTableViewCellDidTapLike()
+    }
+    
+    @objc private func didTapShare() {
+        delegate?.tweetTableViewCellDidTapShare()
+    }
+    
+    private func configureButtons(){
+        replyButton.addTarget(self, action: #selector(didTapReply), for: .touchUpInside)
+        retweetButton.addTarget(self, action: #selector(didTapRetweet), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
+        shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
     }
 
     private func configureConstraints() {
@@ -158,6 +192,7 @@ class TweetTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate(likeButtonConstraints)
         NSLayoutConstraint.activate(shareButtonConstraints)
     }
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
