@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		660FE404295DD53100D30E52 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660FE403295DD53100D30E52 /* ProfileViewController.swift */; };
+		660FE406295DDB6E00D30E52 /* ProfileTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660FE405295DDB6E00D30E52 /* ProfileTableViewHeaderView.swift */; };
 		66906B5B2957408C00F2E6AE /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66906B5A2957408C00F2E6AE /* TweetTableViewCell.swift */; };
 		66AED8722955F4A60071BEB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AED8712955F4A60071BEB4 /* AppDelegate.swift */; };
 		66AED8742955F4A60071BEB4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AED8732955F4A60071BEB4 /* SceneDelegate.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		660FE403295DD53100D30E52 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		660FE405295DDB6E00D30E52 /* ProfileTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewHeaderView.swift; sourceTree = "<group>"; };
 		66906B5A2957408C00F2E6AE /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		66AED86E2955F4A60071BEB4 /* TwitterAndFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterAndFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66AED8712955F4A60071BEB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				66906B5A2957408C00F2E6AE /* TweetTableViewCell.swift */,
+				660FE405295DDB6E00D30E52 /* ProfileTableViewHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				66AED8742955F4A60071BEB4 /* SceneDelegate.swift in Sources */,
 				66AED8882955F6790071BEB4 /* HomeViewController.swift in Sources */,
 				660FE404295DD53100D30E52 /* ProfileViewController.swift in Sources */,
+				660FE406295DDB6E00D30E52 /* ProfileTableViewHeaderView.swift in Sources */,
 				66AED88E2955F6AA0071BEB4 /* DirectMessagesViewController.swift in Sources */,
 				66906B5B2957408C00F2E6AE /* TweetTableViewCell.swift in Sources */,
 			);
@@ -338,6 +342,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -368,6 +373,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
