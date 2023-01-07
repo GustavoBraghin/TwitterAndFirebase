@@ -75,6 +75,42 @@ class ProfileTableViewHeaderView: UIView {
         return label
     }()
     
+    private let followingCountLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "314"
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 14, weight: .bold)
+        return label
+    }()
+    
+    private let followingTextLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Following"
+        label.textColor = .secondaryLabel
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        return label
+    }()
+    
+    private let followersCountLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "120"
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 14, weight: .bold)
+        return label
+    }()
+    
+    private let followersTextLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Followers"
+        label.textColor = .secondaryLabel
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(profileHeaderImageView)
@@ -84,6 +120,10 @@ class ProfileTableViewHeaderView: UIView {
         addSubview(userBioLabel)
         addSubview(joinDateImageView)
         addSubview(joinDateLabel)
+        addSubview(followingCountLabel)
+        addSubview(followingTextLabel)
+        addSubview(followersCountLabel)
+        addSubview(followersTextLabel)
         configureConstraints()
     }
     
@@ -105,7 +145,7 @@ class ProfileTableViewHeaderView: UIView {
         
         let displayNameLabelConstraints = [
             displayNameLabel.leadingAnchor.constraint(equalTo: profileAvatarImageView.leadingAnchor),
-            displayNameLabel.topAnchor.constraint(equalTo: profileAvatarImageView.bottomAnchor, constant: 20)
+            displayNameLabel.topAnchor.constraint(equalTo: profileAvatarImageView.bottomAnchor, constant: 15)
         ]
         
         let userNameLabelConstraints = [
@@ -129,6 +169,26 @@ class ProfileTableViewHeaderView: UIView {
             joinDateLabel.bottomAnchor.constraint(equalTo: joinDateImageView.bottomAnchor)
         ]
         
+        let followingCountLabelConstraints = [
+            followingCountLabel.leadingAnchor.constraint(equalTo: displayNameLabel.leadingAnchor),
+            followingCountLabel.topAnchor.constraint(equalTo: joinDateLabel.bottomAnchor, constant: 10)
+        ]
+        
+        let followingTextLabelConstraints = [
+            followingTextLabel.leadingAnchor.constraint(equalTo: followingCountLabel.trailingAnchor, constant: 4),
+            followingTextLabel.bottomAnchor.constraint(equalTo: followingCountLabel.bottomAnchor)
+        ]
+        
+        let followersCountLabelConstraints = [
+            followersCountLabel.leadingAnchor.constraint(equalTo: followingTextLabel.trailingAnchor, constant: 8),
+            followersCountLabel.bottomAnchor.constraint(equalTo: followingCountLabel.bottomAnchor)
+        ]
+        
+        let followersTextLabelConstraints = [
+            followersTextLabel.leadingAnchor.constraint(equalTo: followersCountLabel.trailingAnchor, constant: 4),
+            followersTextLabel.bottomAnchor.constraint(equalTo: followingCountLabel.bottomAnchor)
+        ]
+        
         NSLayoutConstraint.activate(profileHeaderImageViewConstraints)
         NSLayoutConstraint.activate(profileAvatarImageViewConstraints)
         NSLayoutConstraint.activate(displayNameLabelConstraints)
@@ -136,6 +196,10 @@ class ProfileTableViewHeaderView: UIView {
         NSLayoutConstraint.activate(userBioLabelConstraints)
         NSLayoutConstraint.activate(joinDateImageViewConstraints)
         NSLayoutConstraint.activate(joinDateLabelConstraints)
+        NSLayoutConstraint.activate(followingCountLabelConstraints)
+        NSLayoutConstraint.activate(followingTextLabelConstraints)
+        NSLayoutConstraint.activate(followersCountLabelConstraints)
+        NSLayoutConstraint.activate(followersTextLabelConstraints)
     }
     
     required init?(coder: NSCoder) {
