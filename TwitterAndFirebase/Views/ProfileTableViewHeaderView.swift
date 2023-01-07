@@ -93,7 +93,7 @@ class ProfileTableViewHeaderView: UIView {
             profileHeaderImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -3),
             profileHeaderImageView.topAnchor.constraint(equalTo: topAnchor),
             profileHeaderImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 3),
-            profileHeaderImageView.heightAnchor.constraint(greaterThanOrEqualToConstant: 180)
+            profileHeaderImageView.heightAnchor.constraint(greaterThanOrEqualToConstant: 150)
         ]
         
         let profileAvatarImageViewConstraints = [
