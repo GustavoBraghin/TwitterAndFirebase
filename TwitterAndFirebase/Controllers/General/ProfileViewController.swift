@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController {
         view.addSubview(profileTableView)
         view.addSubview(statusBar)
         
-        let profileHeader = ProfileTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: profileTableView.frame.width, height: 400))
+        let profileHeader = ProfileTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: profileTableView.frame.width, height: 450))
         
         profileTableView.delegate = self
         profileTableView.dataSource = self

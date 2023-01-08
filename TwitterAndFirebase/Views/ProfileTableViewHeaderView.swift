@@ -111,6 +111,53 @@ class ProfileTableViewHeaderView: UIView {
         return label
     }()
     
+    // Using map to create buttons with some predefined titles and style
+    private var tabs : [UIButton] = ["Tweets", "Tweets and replies", "Media", "Likes"]
+        .map { buttonTitle in
+            let button = UIButton(type: .system)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.setTitle(buttonTitle, for: .normal)
+            button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+            button.tintColor = .secondaryLabel
+            return button
+        }
+    
+    // Explicar o uso de lazy aqui
+    private lazy var sectionStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: tabs)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.distribution = .equalSpacing
+        stack.axis = .horizontal
+        stack.alignment = .center
+        return stack
+    }()
+    
+    private enum SectionTabs: String {
+        case tweets = "Tweets"
+        case tweetsAndReplies = "Tweets and replies"
+        case media = "Media"
+        case likes = "Likes"
+        
+        var index: Int {
+            switch self {
+            case .tweets:
+                return 0
+            case .tweetsAndReplies:
+                return 1
+            case .media:
+                return 2
+            case .likes:
+                return 3
+            }
+        }
+    }
+    
+    private var selectedTab: Int = 0 {
+        didSet{
+            print(selectedTab)
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(profileHeaderImageView)
@@ -124,7 +171,31 @@ class ProfileTableViewHeaderView: UIView {
         addSubview(followingTextLabel)
         addSubview(followersCountLabel)
         addSubview(followersTextLabel)
+        addSubview(sectionStack)
         configureConstraints()
+        configureStackButtons()
+    }
+    private func configureStackButtons() {
+        for (_, button) in sectionStack.arrangedSubviews.enumerated() {
+            guard let button = button as? UIButton else { return }
+            button.addTarget(self, action: #selector(didTapTab(_:)), for: .touchUpInside)
+        }
+    }
+    
+    @objc private func didTapTab(_ sender: UIButton) {
+        guard let label = sender.titleLabel?.text else { return }
+        switch label {
+        case SectionTabs.tweets.rawValue:
+            selectedTab = 0
+        case SectionTabs.tweetsAndReplies.rawValue:
+            selectedTab = 1
+        case SectionTabs.media.rawValue:
+            selectedTab = 2
+        case SectionTabs.likes.rawValue:
+            selectedTab = 3
+        default:
+            selectedTab = 0
+        }
     }
     
     private func configureConstraints() {
@@ -189,6 +260,13 @@ class ProfileTableViewHeaderView: UIView {
             followersTextLabel.bottomAnchor.constraint(equalTo: followingCountLabel.bottomAnchor)
         ]
         
+        let sectionStackConstraints = [
+            sectionStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+            sectionStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
+            sectionStack.topAnchor.constraint(equalTo: followingCountLabel.bottomAnchor, constant: 5),
+            sectionStack.heightAnchor.constraint(equalToConstant: 35)
+        ]
+        
         NSLayoutConstraint.activate(profileHeaderImageViewConstraints)
         NSLayoutConstraint.activate(profileAvatarImageViewConstraints)
         NSLayoutConstraint.activate(displayNameLabelConstraints)
@@ -200,6 +278,7 @@ class ProfileTableViewHeaderView: UIView {
         NSLayoutConstraint.activate(followingTextLabelConstraints)
         NSLayoutConstraint.activate(followersCountLabelConstraints)
         NSLayoutConstraint.activate(followersTextLabelConstraints)
+        NSLayoutConstraint.activate(sectionStackConstraints)
     }
     
     required init?(coder: NSCoder) {
