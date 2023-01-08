@@ -33,6 +33,7 @@ class ProfileViewController: UIViewController {
         view.addSubview(profileTableView)
         view.addSubview(statusBar)
         
+        // This height must be adaptative?
         let profileHeader = ProfileTableViewHeaderView(frame: CGRect(x: 0, y: 0, width: profileTableView.frame.width, height: 450))
         
         profileTableView.delegate = self
@@ -56,6 +57,7 @@ class ProfileViewController: UIViewController {
             statusBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             statusBar.topAnchor.constraint(equalTo: view.topAnchor),
             statusBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            // Depending on the iphone model, the status bar height changes
             statusBar.heightAnchor.constraint(equalToConstant: view.bounds.height > 800 ? 40 : 20)
         ]
         
