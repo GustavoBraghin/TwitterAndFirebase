@@ -29,6 +29,7 @@
 		66E66A90296C871000DF232A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 66E66A8F296C871000DF232A /* FirebaseFirestoreSwift */; };
 		66E66A92296C871000DF232A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 66E66A91296C871000DF232A /* FirebaseStorage */; };
 		66E66A94296C871000DF232A /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 66E66A93296C871000DF232A /* FirebaseStorageCombine-Community */; };
+		66E66A97296C8A7600DF232A /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E66A96296C8A7600DF232A /* OnboardingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		66AED88B2955F6950071BEB4 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		66AED88D2955F6AA0071BEB4 /* DirectMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessagesViewController.swift; sourceTree = "<group>"; };
 		66E66A80296C85ED00DF232A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		66E66A96296C8A7600DF232A /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		66E66A95296C892F00DF232A /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				66E66A96296C8A7600DF232A /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				660FE404295DD53100D30E52 /* ProfileViewController.swift in Sources */,
 				660FE406295DDB6E00D30E52 /* ProfileTableViewHeaderView.swift in Sources */,
 				66AED88E2955F6AA0071BEB4 /* DirectMessagesViewController.swift in Sources */,
+				66E66A97296C8A7600DF232A /* OnboardingViewController.swift in Sources */,
 				66906B5B2957408C00F2E6AE /* TweetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

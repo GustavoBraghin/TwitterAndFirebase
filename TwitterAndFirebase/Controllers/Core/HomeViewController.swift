@@ -53,7 +53,9 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         
         if Auth.auth().currentUser == nil {
-            
+            let vc = UINavigationController(rootViewController: OnboardingViewController())
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: false)
         }
     }
     
