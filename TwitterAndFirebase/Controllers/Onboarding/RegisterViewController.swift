@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Combine
 
 class RegisterViewController: UIViewController {
+    
+    private var viewModel = RegisterViewViewModel()
+    private var subscriptions: Set<AnyCancellable> = []
     
     private let registerTitleLabel: UILabel = {
         let label = UILabel()
@@ -48,8 +52,36 @@ class RegisterViewController: UIViewController {
         button.backgroundColor = UIColor(red: 29/255, green: 161/255, blue: 242/255, alpha: 1)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 25
+        button.isEnabled = false
         return button
     }()
+    
+    @objc private func didChangeEmailField() {
+        viewModel.email = emailTextField.text
+        viewModel.validateRegistrationForm()
+    }
+    
+    @objc private func didChangePasswordField() {
+        viewModel.password = passwordTextField.text
+        viewModel.validateRegistrationForm()
+    }
+    
+    private func bindViews() {
+        emailTextField.addTarget(self, action: #selector(didChangeEmailField), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(didChangePasswordField), for: .editingChanged)
+        /* [weak self] creates a weak reference to self in a closure.
+        This prevents memory leaks due to strong reference cycles.
+        https://www.codingem.com/weak-self-in-swift/ */
+        viewModel.$isRegistrationFormValid.sink { [weak self] validationState in
+            self?.registerButton.isEnabled = validationState
+        }
+        .store(in: &subscriptions)
+    }
+    
+    //when view gets touched it dismiss the keyboard
+    @objc private func didTapToDismiss() {
+        view.endEditing(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +92,8 @@ class RegisterViewController: UIViewController {
         view.addSubview(registerButton)
         
         configureConstraints()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapToDismiss)))
+        bindViews()
     }
     
     private func configureConstraints() {
