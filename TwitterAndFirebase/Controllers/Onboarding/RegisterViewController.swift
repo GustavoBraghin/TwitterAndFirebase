@@ -76,11 +76,20 @@ class RegisterViewController: UIViewController {
             self?.registerButton.isEnabled = validationState
         }
         .store(in: &subscriptions)
+        
+        viewModel.$user.sink { [weak self] user in
+            print(user)
+        }
+        .store(in: &subscriptions)
     }
     
     //when view gets touched it dismiss the keyboard
     @objc private func didTapToDismiss() {
         view.endEditing(true)
+    }
+    
+    @objc private func didTapRegister() {
+        viewModel.createUser()
     }
     
     override func viewDidLoad() {
@@ -90,6 +99,7 @@ class RegisterViewController: UIViewController {
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(registerButton)
+        registerButton.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
         
         configureConstraints()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapToDismiss)))
