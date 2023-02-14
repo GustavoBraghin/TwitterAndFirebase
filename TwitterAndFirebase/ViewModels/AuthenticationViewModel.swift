@@ -13,21 +13,21 @@ import Combine
 // ObservableObject is a type of object that has a publisher which emits the var value before it really changes.
 // https://developer.apple.com/documentation/combine/observableobject
 
-final class RegisterViewViewModel: ObservableObject {
+final class AuthenticationViewModel: ObservableObject {
     
     @Published var email: String?
     @Published var password: String?
-    @Published var isRegistrationFormValid: Bool = false
+    @Published var isAuthenticationFormValid: Bool = false
     @Published var user: User?
     private var subscriptions: Set<AnyCancellable> = []
     
-    func validateRegistrationForm() {
+    func validateAuthenticationForm() {
         guard let email = email,
               let password = password else {
-                  isRegistrationFormValid = false
+            isAuthenticationFormValid = false
                   return
               }
-        isRegistrationFormValid = isValidEmail(email) && password.count >= 8
+        isAuthenticationFormValid = isValidEmail(email) && password.count >= 8
     }
     
     func isValidEmail(_ email: String) -> Bool {
