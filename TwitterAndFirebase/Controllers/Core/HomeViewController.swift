@@ -48,15 +48,18 @@ class HomeViewController: UIViewController {
         timelineTableView.frame = view.frame
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
-        
+    private func handleAuthentication() {
         if Auth.auth().currentUser == nil {
             let vc = UINavigationController(rootViewController: OnboardingViewController())
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: false)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+        handleAuthentication()
     }
     
 }
