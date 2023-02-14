@@ -110,15 +110,19 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        view.addSubview(registerTitleLabel)
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(registerButton)
+        addSubViews()
         registerButton.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
         
         configureConstraints()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapToDismiss)))
         bindViews()
+    }
+    
+    private func addSubViews() {
+        view.addSubview(registerTitleLabel)
+        view.addSubview(emailTextField)
+        view.addSubview(passwordTextField)
+        view.addSubview(registerButton)
     }
     
     private func configureConstraints() {

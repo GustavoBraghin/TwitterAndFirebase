@@ -102,13 +102,17 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .systemBackground
+        addSubViews()
+        loginButton.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
+        configureConstraints()
+        bindViews()
+    }
+    
+    private func addSubViews() {
         view.addSubview(loginTitleLabel)
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
-        loginButton.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
-        configureConstraints()
-        bindViews()
     }
     
     @objc private func didTapLogin() {

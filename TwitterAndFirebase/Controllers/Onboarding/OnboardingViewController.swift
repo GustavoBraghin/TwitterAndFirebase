@@ -53,14 +53,18 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        view.addSubview(welcomeLabel)
-        view.addSubview(createAccountButton)
-        view.addSubview(promptLabel)
-        view.addSubview(loginButton)
+        addSubViews()
         
         createAccountButton.addTarget(self, action: #selector(didTapCreateAccount), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
         configureConstraints()
+    }
+    
+    private func addSubViews() {
+        view.addSubview(welcomeLabel)
+        view.addSubview(createAccountButton)
+        view.addSubview(promptLabel)
+        view.addSubview(loginButton)
     }
     
     @objc private func didTapLogin() {
