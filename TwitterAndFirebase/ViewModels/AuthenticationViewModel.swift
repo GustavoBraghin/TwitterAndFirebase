@@ -19,6 +19,8 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var password: String?
     @Published var isAuthenticationFormValid: Bool = false
     @Published var user: User?
+    @Published var error: String?
+    
     private var subscriptions: Set<AnyCancellable> = []
     
     func validateAuthenticationForm() {
@@ -42,13 +44,33 @@ final class AuthenticationViewModel: ObservableObject {
               let password = password else { return }
         
         AuthManager.shared.registerUser(with: email, password: password)
-            .sink { _ in
+            .sink { [weak self] completion in
+                
+                if case .failure(let error) = completion {
+                    self?.error = error.localizedDescription
+                }
                 
             } receiveValue: { [weak self] user in
                 self?.user = user
             }
             .store(in: &subscriptions)
-
+    }
+    
+    func loginUser() {
+        guard let email = email,
+              let password = password else { return }
+        
+        AuthManager.shared.loginUser(with: email, password: password)
+            .sink { [weak self] completion in
+                
+                if case .failure(let error) = completion {
+                    self?.error = error.localizedDescription
+                }
+                
+            } receiveValue: { [weak self] user in
+                self?.user = user
+            }
+            .store(in: &subscriptions)
     }
     
     
