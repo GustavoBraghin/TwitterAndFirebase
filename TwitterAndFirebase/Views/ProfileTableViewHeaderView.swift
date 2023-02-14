@@ -182,6 +182,12 @@ class ProfileTableViewHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubViews()
+        configureConstraints()
+        configureStackButtons()
+    }
+    
+    private func addSubViews() {
         addSubview(profileHeaderImageView)
         addSubview(profileAvatarImageView)
         addSubview(displayNameLabel)
@@ -195,9 +201,8 @@ class ProfileTableViewHeaderView: UIView {
         addSubview(followersTextLabel)
         addSubview(sectionStack)
         addSubview(indicator)
-        configureConstraints()
-        configureStackButtons()
     }
+    
     private func configureStackButtons() {
         for (i, button) in sectionStack.arrangedSubviews.enumerated() {
             guard let button = button as? UIButton else { return }

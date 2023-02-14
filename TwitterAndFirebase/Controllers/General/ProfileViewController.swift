@@ -76,6 +76,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.delegate = self
         return cell
     }
     
@@ -93,5 +94,24 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 self?.statusBar.layer.opacity = 0
             }
         }
+    }
+}
+
+//MARK: TweetTableViewCell extension
+extension ProfileViewController: TweetTableViewCellDelegate {
+    func tweetTableViewCellDidTapReply() {
+        print("Reply")
+    }
+    
+    func tweetTableViewCellDidTapRetweet() {
+        print("Retweet")
+    }
+    
+    func tweetTableViewCellDidTapLike() {
+        print("Like")
+    }
+    
+    func tweetTableViewCellDidTapShare() {
+        print("Share")
     }
 }
