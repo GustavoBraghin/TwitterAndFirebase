@@ -101,6 +101,12 @@ class TweetTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        addSubViews()
+        configureConstraints()
+        configureButtons()
+    }
+    
+    private func addSubViews() {
         contentView.addSubview(avatarImageView)
         contentView.addSubview(displayNameLabel)
         contentView.addSubview(usernameLabel)
@@ -109,8 +115,6 @@ class TweetTableViewCell: UITableViewCell {
         contentView.addSubview(retweetButton)
         contentView.addSubview(likeButton)
         contentView.addSubview(shareButton)
-        configureConstraints()
-        configureButtons()
     }
     
     // @objc is to make the method visible to Objective C
