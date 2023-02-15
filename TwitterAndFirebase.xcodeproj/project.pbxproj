@@ -10,6 +10,8 @@
 		660FE404295DD53100D30E52 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660FE403295DD53100D30E52 /* ProfileViewController.swift */; };
 		660FE406295DDB6E00D30E52 /* ProfileTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660FE405295DDB6E00D30E52 /* ProfileTableViewHeaderView.swift */; };
 		661D97B3298D53FA00C201F3 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661D97B2298D53FA00C201F3 /* AuthManager.swift */; };
+		6626EF52299D49D300F7511A /* TwitterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6626EF51299D49D300F7511A /* TwitterUser.swift */; };
+		6626EF54299D4A8D00F7511A /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6626EF53299D4A8D00F7511A /* DatabaseManager.swift */; };
 		66279422298C3DAC00FF8244 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66279421298C3DAC00FF8244 /* AuthenticationViewModel.swift */; };
 		66906B5B2957408C00F2E6AE /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66906B5A2957408C00F2E6AE /* TweetTableViewCell.swift */; };
 		66AED8722955F4A60071BEB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AED8712955F4A60071BEB4 /* AppDelegate.swift */; };
@@ -40,6 +42,8 @@
 		660FE403295DD53100D30E52 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		660FE405295DDB6E00D30E52 /* ProfileTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewHeaderView.swift; sourceTree = "<group>"; };
 		661D97B2298D53FA00C201F3 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		6626EF51299D49D300F7511A /* TwitterUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterUser.swift; sourceTree = "<group>"; };
+		6626EF53299D4A8D00F7511A /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		66279421298C3DAC00FF8244 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		66906B5A2957408C00F2E6AE /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		66AED86E2955F4A60071BEB4 /* TwitterAndFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterAndFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,8 +95,17 @@
 			isa = PBXGroup;
 			children = (
 				661D97B2298D53FA00C201F3 /* AuthManager.swift */,
+				6626EF53299D4A8D00F7511A /* DatabaseManager.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		6626EF50299D49AD00F7511A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6626EF51299D49D300F7511A /* TwitterUser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		66279420298C3D8000FF8244 /* ViewModels */ = {
@@ -131,6 +144,7 @@
 		66AED8702955F4A60071BEB4 /* TwitterAndFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				6626EF50299D49AD00F7511A /* Models */,
 				661D97B1298D53E400C201F3 /* Networking */,
 				66279420298C3D8000FF8244 /* ViewModels */,
 				66906B592957406C00F2E6AE /* Views */,
@@ -266,6 +280,7 @@
 				661D97B3298D53FA00C201F3 /* AuthManager.swift in Sources */,
 				66AED8762955F4A60071BEB4 /* MainTabBarViewController.swift in Sources */,
 				66FB3E8A299BD6BC006867DA /* LoginViewController.swift in Sources */,
+				6626EF54299D4A8D00F7511A /* DatabaseManager.swift in Sources */,
 				66AED8722955F4A60071BEB4 /* AppDelegate.swift in Sources */,
 				66F048852970856A00BDAB81 /* RegisterViewController.swift in Sources */,
 				66AED88C2955F6950071BEB4 /* NotificationsViewController.swift in Sources */,
@@ -276,6 +291,7 @@
 				660FE406295DDB6E00D30E52 /* ProfileTableViewHeaderView.swift in Sources */,
 				66AED88E2955F6AA0071BEB4 /* DirectMessagesViewController.swift in Sources */,
 				66E66A97296C8A7600DF232A /* OnboardingViewController.swift in Sources */,
+				6626EF52299D49D300F7511A /* TwitterUser.swift in Sources */,
 				66906B5B2957408C00F2E6AE /* TweetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
