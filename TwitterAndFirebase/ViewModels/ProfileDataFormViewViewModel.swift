@@ -11,6 +11,7 @@ import UIKit
 import FirebaseStorage
 
 final class ProfileDataFormViewViewModel: ObservableObject {
+    
     private var subscriptions: Set<AnyCancellable> = []
     
     @Published var displayName: String?
