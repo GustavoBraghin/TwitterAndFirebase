@@ -7,10 +7,12 @@
 
 import UIKit
 import PhotosUI
+import Combine
 
 class ProfileDataFormViewController: UIViewController {
     
     private var viewModel = ProfileDataFormViewViewModel()
+    private var subscriptions: Set<AnyCancellable> = []
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -110,6 +112,26 @@ class ProfileDataFormViewController: UIViewController {
         configureConstraints()
         
         avatarPlaceholderImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapToUpload)))
+        bindViews()
+    }
+    
+    @objc private func didUpdateDisplayName() {
+        viewModel.displayName = displayNameTextField.text
+        viewModel.validateUserProfileForm()
+    }
+    
+    @objc private func didUpdateUsername() {
+        viewModel.userName = usernameTextField.text
+        viewModel.validateUserProfileForm()
+    }
+    
+    private func bindViews() {
+        displayNameTextField.addTarget(self, action: #selector(didUpdateDisplayName), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(didUpdateUsername), for: .editingChanged)
+        viewModel.$isFormValid.sink { [weak self] buttonState in
+            self?.submitButton.isEnabled = buttonState
+        }
+        .store(in: &subscriptions)
     }
     
     //dismiss keyboard by default when touching view
@@ -213,6 +235,11 @@ extension ProfileDataFormViewController: UITextViewDelegate, UITextFieldDelegate
         }
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        viewModel.bio = textView.text
+        viewModel.validateUserProfileForm()
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         scrollView.setContentOffset(CGPoint(x: 0, y: textField.frame.origin.y - 100), animated: true)
     }
@@ -232,6 +259,8 @@ extension ProfileDataFormViewController: PHPickerViewControllerDelegate {
                     DispatchQueue.main.async {
                         self?.avatarPlaceholderImageView.image = image
                         self?.avatarPlaceholderImageView.contentMode = .scaleAspectFill
+                        self?.viewModel.imageData = image
+                        self?.viewModel.validateUserProfileForm()
                     }
                 }
             }
