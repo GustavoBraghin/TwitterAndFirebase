@@ -1,2 +1,2 @@
 # TwitterAndFirebase
-Project using UIKit ViewCode to create all the Twitter UI and firebase to storage data, with MVC pattern
+Project using UIKit ViewCode to create all the Twitter UI and firebase to storage data, with MVVM pattern
