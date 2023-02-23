@@ -126,7 +126,7 @@ class ProfileDataFormViewController: UIViewController {
     }
     
     @objc private func didUpdateUsername() {
-        viewModel.userName = usernameTextField.text
+        viewModel.username = usernameTextField.text
         viewModel.validateUserProfileForm()
     }
     
@@ -137,6 +137,12 @@ class ProfileDataFormViewController: UIViewController {
             self?.submitButton.isEnabled = buttonState
         }
         .store(in: &subscriptions)
+        
+        viewModel.$isOnboardingFinished.sink { [weak self] success in
+            if success {
+                self?.dismiss(animated: true)
+            }
+        }.store(in: &subscriptions)
     }
     
     //dismiss keyboard by default when touching view

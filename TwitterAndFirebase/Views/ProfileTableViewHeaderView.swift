@@ -20,39 +20,35 @@ class ProfileTableViewHeaderView: UIView {
         return imageView
     }()
     
-    private let profileAvatarImageView: UIImageView = {
+    lazy var profileAvatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 40
-        imageView.image = UIImage(systemName: "person")
-        imageView.backgroundColor = .yellow
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private let displayNameLabel: UILabel = {
+    lazy var displayNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Gustavo"
         label.textColor = .label
         label.font = .systemFont(ofSize: 22, weight: .bold)
         return label
     }()
     
-    private let usernameLabel: UILabel = {
+    lazy var usernameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "@gbraghin"
         label.textColor = .secondaryLabel
         label.font = .systemFont(ofSize: 18, weight: .regular)
         return label
     }()
     
-    private let userBioLabel: UILabel = {
+    lazy var userBioLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "iOS Developer from Apple and Tesla"
         label.numberOfLines = 3
         label.textColor = .label
         return label
@@ -66,7 +62,7 @@ class ProfileTableViewHeaderView: UIView {
         return imageView
     }()
     
-    private let joinDateLabel: UILabel = {
+    lazy var joinDateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Joined December 2022"
@@ -75,10 +71,9 @@ class ProfileTableViewHeaderView: UIView {
         return label
     }()
     
-    private let followingCountLabel: UILabel = {
+    lazy var followingCountLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "314"
         label.textColor = .label
         label.font = .systemFont(ofSize: 14, weight: .bold)
         return label
@@ -93,10 +88,9 @@ class ProfileTableViewHeaderView: UIView {
         return label
     }()
     
-    private let followersCountLabel: UILabel = {
+    lazy var followersCountLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "120"
         label.textColor = .label
         label.font = .systemFont(ofSize: 14, weight: .bold)
         return label
