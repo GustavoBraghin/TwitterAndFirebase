@@ -6,17 +6,23 @@
 //
 
 import UIKit
+import Combine
 
 class TweetComposeViewController: UIViewController {
+    
+    private var viewModel = TweetComposeViewViewModel()
+    private var subscriptions: Set<AnyCancellable> = []
     
     private lazy var tweetButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .twitterBlueColor
         button.setTitle("Tweet", for: .normal)
+        button.isEnabled = false
         button.layer.cornerRadius = 25
         button.clipsToBounds = true
         button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(.white.withAlphaComponent(0.7), for: .disabled)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         return button
     }()
@@ -44,6 +50,19 @@ class TweetComposeViewController: UIViewController {
         view.addSubview(tweetButton)
         view.addSubview(tweetContentTextView)
         configureConstraints()
+        bindViews()
+    }
+    
+    private func bindViews() {
+        viewModel.$isValidToTweet.sink { [weak self] state in
+            self?.tweetButton.isEnabled = state
+        }
+        .store(in: &subscriptions)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.getUserData()
     }
     
     @objc private func didTapToCancel() {
@@ -83,5 +102,10 @@ extension TweetComposeViewController: UITextViewDelegate {
             textView.text = "What's happening?"
             textView.textColor = .gray
         }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        viewModel.tweetContent = textView.text
+        viewModel.validateToTweet()
     }
 }
