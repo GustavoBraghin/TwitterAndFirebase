@@ -62,8 +62,8 @@ class ProfileViewController: UIViewController {
             self?.headerView.followersCountLabel.text = "\(user.followersCount)"
             self?.headerView.followingCountLabel.text = "\(user.followingCount)"
             self?.headerView.userBioLabel.text = user.bio
-            self?.headerView.joinDateLabel.text = "Joined \(user.createdOn.description)"
             self?.headerView.profileAvatarImageView.sd_setImage(with: URL(string: user.avatarPath))
+            self?.headerView.joinDateLabel.text = "Joined \(self?.viewModel.getFormattedDate(with: user.createdOn) ?? "")"
         }
         .store(in: &subscriptions)
     }
