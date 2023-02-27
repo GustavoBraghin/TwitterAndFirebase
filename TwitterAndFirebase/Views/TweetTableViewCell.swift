@@ -36,14 +36,12 @@ class TweetTableViewCell: UITableViewCell {
         imageView.layer.cornerRadius = 25
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
-        imageView.image = UIImage(systemName: "person")
         imageView.backgroundColor = .blue
         return imageView
     }()
     
     private let displayNameLabel: UILabel = {
        let label = UILabel()
-        label.text = "Gustavo"
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -51,7 +49,6 @@ class TweetTableViewCell: UITableViewCell {
     
     private let usernameLabel: UILabel = {
        let label = UILabel()
-        label.text = "@gbraghin"
         label.textColor = .secondaryLabel
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +58,6 @@ class TweetTableViewCell: UITableViewCell {
     private let tweetTextContentLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Tweet with long text to test if its size is going to be adptative or not ...!!!... nice try"
         //Number of lines = 0 to let it be adaptative
         label.numberOfLines = 0
         return label
@@ -115,6 +111,13 @@ class TweetTableViewCell: UITableViewCell {
         contentView.addSubview(retweetButton)
         contentView.addSubview(likeButton)
         contentView.addSubview(shareButton)
+    }
+    
+    func configureTweet(with displayName: String, username: String, tweeTextContent: String, avatarPath: String) {
+        displayNameLabel.text = displayName
+        usernameLabel.text = "@\(username)"
+        tweetTextContentLabel.text = tweeTextContent
+        avatarImageView.sd_setImage(with: URL(string: avatarPath))
     }
     
     // @objc is to make the method visible to Objective C
